@@ -87,32 +87,50 @@
         </ul>
       </div>
 
-      <section class="card" style="background: none; box-shadow: none; border: none; padding: 0;">
-        <h2>📚 Year 13 Exam Papers</h2>
-        <p class="muted">Access official Fiji Ministry of Education final exam papers for each subject. Click a subject to view and download past papers.</p>
-        <div class="exam-grid">
-          <div class="exam-box" onclick="openExamPapers('english')">
-            <div class="exam-icon">📖</div>
-            <div class="exam-title">English</div>
-          </div>
-          <div class="exam-box" onclick="openExamPapers('maths')">
-            <div class="exam-icon">➗</div>
-            <div class="exam-title">Mathematics</div>
-          </div>
-          <div class="exam-box" onclick="openExamPapers('accounting')">
-            <div class="exam-icon">📊</div>
-            <div class="exam-title">Accounting</div>
-          </div>
-          <div class="exam-box" onclick="openExamPapers('economics')">
-            <div class="exam-icon">💹</div>
-            <div class="exam-title">Economics</div>
-          </div>
-          <div class="exam-box" onclick="openExamPapers('computer')">
-            <div class="exam-icon">💻</div>
-            <div class="exam-title">Computer</div>
-          </div>
-        </div>
-      </section>
+
+<section class="study-resources">
+  <h2>📘 Study Resources Showcase</h2>
+  <p>Explore Year 13 study tools and learning resources for English, Mathematics and Computer Studies.</p>
+
+  <div class="resource-container">
+
+    <div class="resource-card">
+      <h3>Worksheet Pack</h3>
+      <p>Exercises for English, Mathematics & Computer Studies</p>
+    </div>
+
+    <div class="resource-card">
+      <h3>Revision Checklist</h3>
+      <p>Checklist for Year 13 Revision Topics</p>
+    </div>
+
+    <div class="resource-card">
+      <h3>English Studies</h3>
+      <p>Year 13 English Resources</p>
+    </div>
+
+    <div class="resource-card">
+      <h3>Mathematics</h3>
+      <p>Year 13 Mathematics Resources</p>
+    </div>
+
+  </div>
+  </section>
+
+  <section class="slideshow-section">
+    <div class="slideshow-container">
+
+      <div class="slide">
+        <img src="images/study-slide.jpg" alt="Study Resources Banner">
+      </div>
+
+      <div class="slide">
+        <img src="images/revision-slide.jpg" alt="Revision Resources Banner">
+      </div>
+
+    </div>
+  </section>
+</section>
 
       <div id="examModal" class="exam-modal" style="display:none;">
         <div class="exam-modal-content">
@@ -164,6 +182,25 @@
           }
         }
       </script>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let slides = document.getElementsByClassName("slide");
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1 }
+
+  slides[slideIndex - 1].style.display = "block";
+
+  setTimeout(showSlides, 3000);
+}
+</script>
 
       <style>
         .exam-grid {
