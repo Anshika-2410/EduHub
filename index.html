@@ -106,19 +106,20 @@
     </section>
 
 
-    <!-- ...existing code... -->
-  </main>
-
-  <footer class="footer">
-    <p>Created by Achal Rao | Page 1</p>
-  </footer>
-  <script>
-    document.addEventListener('click', function(e) {
-      if (e.target && e.target.classList.contains('backtop')) {
-        e.preventDefault();
-        document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+    <style>
+      .custom-slideshow {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 18px;
+        min-height: 320px;
+        background: #16213e;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.18);
       }
-    });
-  </script>
-</body>
-</html>
+      .custom-slides {
+        display: flex;
+        width: 500%;
+
+        animation: custom-slide 20s infinite;
