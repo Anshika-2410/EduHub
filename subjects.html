@@ -64,16 +64,82 @@
       </div>
     </section>
 
-    <section class="card" style="margin-top: 20px; background: #f0f7ff; border-left: 4px solid #1a5490;">
-      <h2>📖 How to Use These Resources</h2>
-      <ol>
-        <li><strong>Choose Your Subject:</strong> Pick the subject that matches your curriculum</li>
-        <li><strong>Explore Resources:</strong> Visit the provided links for videos, tutorials, and explanations</li>
-        <li><strong>Practice Actively:</strong> Work through practice problems and challenges</li>
-        <li><strong>Take Notes:</strong> Write key concepts in your own words</li>
-        <li><strong>Use Study Tools:</strong> Download planners and worksheets from the Study Tools page</li>
+    <section class="card" style="margin-top: 20px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); border-left: 4px solid #1e40af; color: #fff;">
+      <h2 style="color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 18px;">📖 How to Use These Resources</h2>
+      <ol style="color: #f0f0f0; font-size: 15px; line-height: 1.8;">
+        <li style="margin-bottom: 12px;"><strong style="color: #fff; font-size: 16px;">Choose Your Subject:</strong> Pick the subject that matches your curriculum</li>
+        <li style="margin-bottom: 12px;"><strong style="color: #fff; font-size: 16px;">Explore Resources:</strong> Visit the provided links for videos, tutorials, and explanations</li>
+        <li style="margin-bottom: 12px;"><strong style="color: #fff; font-size: 16px;">Practice Actively:</strong> Work through practice problems and challenges</li>
+        <li style="margin-bottom: 12px;"><strong style="color: #fff; font-size: 16px;">Take Notes:</strong> Write key concepts in your own words</li>
+        <li><strong style="color: #fff; font-size: 16px;">Use Study Tools:</strong> Download planners and worksheets from the Study Tools page</li>
       </ol>
     </section>
+
+    <div class="carousel premium-carousel">
+      <div class="overlay-text">
+        <h1 style="font-size:2.2rem; font-weight:800; margin-bottom:10px; letter-spacing:1px;">Study Resources Showcase</h1>
+        <p style="font-size:1.1rem; font-weight:500;">Explore Year 13 tools for English, Mathematics and Computer Studies.</p>
+      </div>
+      <div class="slides premium-slides">
+        <img src="assets/slide1.jpg" alt="Empowering Year 13 Students: English, Mathematics, Computer Studies" />
+        <img src="assets/slide2.jpg" alt="Aligned with Fiji Year 13 Curriculum: Structured, Practical, Exam Focused" />
+        <img src="assets/slide3.jpg" alt="Study Planner, Revision Checklist, Worksheets: Organise. Revise. Succeed." />
+      </div>
+    </div>
+
+    <style>
+      .premium-carousel {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        border-radius: 18px;
+        min-height: 350px;
+        margin-bottom: 32px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        background: #16213e;
+      }
+      .premium-slides {
+        display: flex;
+        width: 300%;
+        animation: premium-slide 18s infinite;
+        height: 350px;
+      }
+      .premium-slides img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        filter: brightness(70%);
+        flex-shrink: 0;
+        border-radius: 0;
+      }
+      @keyframes premium-slide {
+        0% { transform: translateX(0%); }
+        28% { transform: translateX(0%); }
+        33% { transform: translateX(-100%); }
+        61% { transform: translateX(-100%); }
+        66% { transform: translateX(-200%); }
+        94% { transform: translateX(-200%); }
+        100% { transform: translateX(0%); }
+      }
+      .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-align: center;
+        z-index: 2;
+        width: 90%;
+        text-shadow: 0 4px 24px rgba(0,0,0,0.45);
+        pointer-events: none;
+      }
+      @media (max-width: 820px) {
+        .premium-slides, .premium-slides img { height: 200px; }
+        .premium-carousel { min-height: 200px; }
+        .overlay-text h1 { font-size: 1.2rem; }
+      }
+    </style>
 
     <a class="backtop" href="#top">Back to Top ↑</a>
   </main>
@@ -81,5 +147,13 @@
   <footer class="footer">
     <p>Created by Achal Rao | Page 2</p>
   </footer>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('backtop')) {
+        e.preventDefault();
+        document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
 </body>
 </html>

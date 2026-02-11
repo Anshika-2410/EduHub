@@ -87,11 +87,188 @@
         </ul>
       </div>
 
-    <a class="backtop" href="#top">Back to Top ↑</a>
+      <section class="card" style="background: none; box-shadow: none; border: none; padding: 0;">
+        <h2>📚 Year 13 Exam Papers</h2>
+        <p class="muted">Access official Fiji Ministry of Education final exam papers for each subject. Click a subject to view and download past papers.</p>
+        <div class="exam-grid">
+          <div class="exam-box" onclick="openExamPapers('english')">
+            <div class="exam-icon">📖</div>
+            <div class="exam-title">English</div>
+          </div>
+          <div class="exam-box" onclick="openExamPapers('maths')">
+            <div class="exam-icon">➗</div>
+            <div class="exam-title">Mathematics</div>
+          </div>
+          <div class="exam-box" onclick="openExamPapers('accounting')">
+            <div class="exam-icon">📊</div>
+            <div class="exam-title">Accounting</div>
+          </div>
+          <div class="exam-box" onclick="openExamPapers('economics')">
+            <div class="exam-icon">💹</div>
+            <div class="exam-title">Economics</div>
+          </div>
+          <div class="exam-box" onclick="openExamPapers('computer')">
+            <div class="exam-icon">💻</div>
+            <div class="exam-title">Computer</div>
+          </div>
+        </div>
+      </section>
+
+      <div id="examModal" class="exam-modal" style="display:none;">
+        <div class="exam-modal-content">
+          <span class="exam-modal-close" onclick="closeExamModal()">&times;</span>
+          <h3 id="examModalTitle"></h3>
+          <ul id="examPapersList"></ul>
+        </div>
+      </div>
+
+      <script>
+        // Example links for demonstration. Replace with actual MOE links when provided.
+        const examLinks = {
+          english: [
+            { year: 'All Years', url: 'https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R' }
+          ],
+          maths: [
+            { year: 'All Years', url: 'https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R' }
+          ],
+          accounting: [
+            { year: 'All Years', url: 'https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R' }
+          ],
+          economics: [
+            { year: 'All Years', url: 'https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R' }
+          ],
+          computer: [
+            { year: 'All Years', url: 'https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R' }
+          ]
+        };
+        function openExamPapers(subject) {
+          const modal = document.getElementById('examModal');
+          const title = document.getElementById('examModalTitle');
+          const list = document.getElementById('examPapersList');
+          title.textContent = subject.charAt(0).toUpperCase() + subject.slice(1) + ' Exam Papers';
+          list.innerHTML = '';
+          examLinks[subject].forEach(paper => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${paper.url}" target="_blank">${paper.year} Final Exam Paper</a>`;
+            list.appendChild(li);
+          });
+          modal.style.display = 'block';
+        }
+        function closeExamModal() {
+          document.getElementById('examModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+          const modal = document.getElementById('examModal');
+          if (event.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+      </script>
+
+      <style>
+        .exam-grid {
+          display: flex;
+          gap: 32px;
+          justify-content: center;
+          margin: 32px 0 0 0;
+          flex-wrap: wrap;
+        }
+        .exam-box {
+          background: linear-gradient(135deg, var(--card-light) 0%, var(--card) 100%);
+          border-radius: 18px;
+          box-shadow: 0 4px 18px rgba(59,130,246,0.10);
+          min-width: 180px;
+          max-width: 200px;
+          min-height: 180px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 28px 18px 18px 18px;
+          transition: transform 0.3s, box-shadow 0.3s;
+          border: 2px solid rgba(59,130,246,0.08);
+          cursor: pointer;
+        }
+        .exam-box:hover {
+          transform: translateY(-8px) scale(1.04);
+          box-shadow: 0 10px 32px rgba(59,130,246,0.18);
+        }
+        .exam-icon {
+          font-size: 48px;
+          margin-bottom: 16px;
+          color: var(--brand2);
+          text-shadow: 0 2px 8px rgba(59,130,246,0.10);
+        }
+        .exam-title {
+          font-size: 20px;
+          font-weight: 700;
+          color: var(--brand2);
+          margin-bottom: 8px;
+          text-align: center;
+        }
+        .exam-modal {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100vw;
+          height: 100vh;
+          overflow: auto;
+          background: rgba(0,0,0,0.4);
+        }
+        .exam-modal-content {
+          background: var(--card);
+          margin: 8% auto;
+          padding: 32px 24px 24px 24px;
+          border: 1px solid #888;
+          width: 90%;
+          max-width: 400px;
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(59,130,246,0.18);
+          color: var(--ink);
+          position: relative;
+        }
+        .exam-modal-close {
+          color: var(--muted);
+          position: absolute;
+          top: 12px;
+          right: 18px;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .exam-modal-close:hover {
+          color: var(--brand2);
+        }
+        #examPapersList {
+          margin-top: 18px;
+        }
+        #examPapersList li {
+          margin-bottom: 10px;
+        }
+        #examPapersList a {
+          color: var(--brand2);
+          text-decoration: underline;
+          font-weight: 500;
+        }
+        #examPapersList a:hover {
+          color: var(--accent2);
+        }
+      </style>
+
   </main>
 
   <footer class="footer">
     <p>Created by Achal Rao | Page 4</p>
   </footer>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('backtop')) {
+        e.preventDefault();
+        document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
 </body>
 </html>
