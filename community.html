@@ -89,35 +89,103 @@
 
 
 <section class="study-resources">
-  <h2>📘 Study Resources Showcase</h2>
-  <p>Explore Year 13 study tools and learning resources for English, Mathematics and Computer Studies.</p>
-
-  <div class="resource-container">
-
-    <div class="resource-card">
-      <h3>Worksheet Pack</h3>
-      <p>Exercises for English, Mathematics & Computer Studies</p>
+  <div class="card" style="margin: 32px 0; padding: 32px 18px; border-radius: 18px;">
+    <h2 style="color: var(--brand2); font-size: 1.7rem; margin-bottom: 10px;">📄 Past Year Papers</h2>
+    <p style="color: var(--muted); margin-bottom: 28px;">Access official Fiji Ministry of Education final exam papers for each subject. Click a subject to view and download past papers from the MOE Fiji Exam Hub.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; align-items: stretch;">
+      <a class="resource-card" href="https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R" target="_blank" rel="noopener" style="text-align:center; min-width:160px; max-width:200px; flex:1 1 160px; background: var(--card-light); border-radius: 14px; box-shadow: 0 2px 8px rgba(59,130,246,0.07); padding: 28px 10px; color: var(--brand2); font-weight:600; font-size:1.1rem; transition: background 0.2s, box-shadow 0.2s;">
+        📖<br>English
+      </a>
+      <a class="resource-card" href="https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R" target="_blank" rel="noopener" style="text-align:center; min-width:160px; max-width:200px; flex:1 1 160px; background: var(--card-light); border-radius: 14px; box-shadow: 0 2px 8px rgba(59,130,246,0.07); padding: 28px 10px; color: var(--brand2); font-weight:600; font-size:1.1rem; transition: background 0.2s, box-shadow 0.2s;">
+        ➗<br>Mathematics
+      </a>
+      <a class="resource-card" href="https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R" target="_blank" rel="noopener" style="text-align:center; min-width:160px; max-width:200px; flex:1 1 160px; background: var(--card-light); border-radius: 14px; box-shadow: 0 2px 8px rgba(59,130,246,0.07); padding: 28px 10px; color: var(--brand2); font-weight:600; font-size:1.1rem; transition: background 0.2s, box-shadow 0.2s;">
+        💻<br>Computer Studies
+      </a>
+      <a class="resource-card" href="https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R" target="_blank" rel="noopener" style="text-align:center; min-width:160px; max-width:200px; flex:1 1 160px; background: var(--card-light); border-radius: 14px; box-shadow: 0 2px 8px rgba(59,130,246,0.07); padding: 28px 10px; color: var(--brand2); font-weight:600; font-size:1.1rem; transition: background 0.2s, box-shadow 0.2s;">
+        📊<br>Accounting
+      </a>
+      <a class="resource-card" href="https://drive.google.com/drive/folders/14_BA2_jSYvlR6wWsjZ7dVvdxGJfHaE6R" target="_blank" rel="noopener" style="text-align:center; min-width:160px; max-width:200px; flex:1 1 160px; background: var(--card-light); border-radius: 14px; box-shadow: 0 2px 8px rgba(59,130,246,0.07); padding: 28px 10px; color: var(--brand2); font-weight:600; font-size:1.1rem; transition: background 0.2s, box-shadow 0.2s;">
+        💹<br>Economics
+      </a>
     </div>
-
-    <div class="resource-card">
-      <h3>Revision Checklist</h3>
-      <p>Checklist for Year 13 Revision Topics</p>
-    </div>
-
-    <div class="resource-card">
-      <h3>English Studies</h3>
-      <p>Year 13 English Resources</p>
-    </div>
-
-    <div class="resource-card">
-      <h3>Mathematics</h3>
-      <p>Year 13 Mathematics Resources</p>
-    </div>
-
   </div>
   </section>
 
   <section class="slideshow-section">
+    <style>
+      .study-resources {
+        margin: 48px 0 32px 0;
+        padding: 32px 24px;
+        background: linear-gradient(135deg, #e3f0ff 0%, #f8fbff 100%);
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(59,130,246,0.08);
+        text-align: center;
+      }
+      .study-resources h2 {
+        color: #1a5490;
+        font-size: 2rem;
+        margin-bottom: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .study-resources p {
+        color: #444;
+        font-size: 1.1rem;
+        margin-bottom: 32px;
+      }
+      .resource-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        justify-content: center;
+        align-items: stretch;
+        margin-top: 12px;
+      }
+      .resource-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(59,130,246,0.07);
+        padding: 32px 28px;
+        min-width: 180px;
+        max-width: 220px;
+        flex: 1 1 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .resource-card:hover {
+        transform: translateY(-8px) scale(1.04);
+        box-shadow: 0 8px 32px rgba(59,130,246,0.15);
+        background: #f0f7ff;
+      }
+      .resource-card h3 {
+        color: #1a5490;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      .resource-card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      @media (max-width: 900px) {
+        .resource-container {
+          flex-direction: column;
+          gap: 18px;
+          align-items: center;
+        }
+        .resource-card {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+    </style>
     <div class="slideshow-container">
 
       <div class="slide">
