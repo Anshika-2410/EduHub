@@ -55,13 +55,10 @@
 
       <div class="card">
         <h2>Flashcards</h2>
-        <div class="flash">
-          <p><strong>Q:</strong> What is a web browser?</p>
-          <p><strong>A:</strong> A program used to open and view websites (e.g., Chrome).</p>
-          <hr />
-          <p><strong>Q:</strong> What is a hyperlink?</p>
-          <p><strong>A:</strong> Clickable text/image that opens another page or site.</p>
+        <div class="flash" id="flashcard-content">
+          <!-- Flashcard content will be injected here -->
         </div>
+        <button id="refresh-flashcard" style="margin-top:12px; padding:8px 18px; border-radius:8px; background:var(--brand2); color:#fff; border:none; font-weight:600; cursor:pointer;">🔄 Refresh</button>
       </div>
 
       <div class="card">
@@ -88,12 +85,97 @@
   </main>
 
   <footer class="footer">
+      <script>
+        const notes = [
+          "Photosynthesis is the process by which green plants use sunlight to make food from carbon dioxide and water.",
+          "The CPU (Central Processing Unit) is the brain of the computer, responsible for processing instructions.",
+          "A variable in programming is a named storage location for data that can change during program execution.",
+          "The water cycle involves evaporation, condensation, and precipitation.",
+          "In mathematics, the area of a rectangle is length × width.",
+          "The capital of Fiji is Suva.",
+          "HTML stands for HyperText Markup Language and is used to create web pages.",
+          "A healthy study routine includes regular breaks and reviewing material after 1 day and 1 week.",
+          "A hyperlink is clickable text or image that takes you to another page or site.",
+          "Writing notes in your own words helps you remember better."
+        ];
+        function showRandomNote() {
+          const idx = Math.floor(Math.random() * notes.length);
+          document.getElementById('flashcard-content').innerHTML = `<p style='font-size:1.1em;'>📝 ${notes[idx]}</p>`;
+        }
+        document.getElementById('refresh-flashcard').onclick = showRandomNote;
+        // Show one on load
+        showRandomNote();
+      </script>
     <p>Created by Achal Rao | Page 3</p>
   </footer>
 
   <script>
     // Quiz Questions Database
     const quizData = {
+            accounting: [
+              {
+                q: "What is the main purpose of accounting?",
+                options: ["To cook food", "To record and report financial information", "To play games", "To design websites"],
+                correct: 1,
+                explanation: "Correct! Accounting is for recording and reporting financial information."
+              },
+              {
+                q: "Which of the following is an asset?",
+                options: ["Bank Loan", "Inventory", "Salary Expense", "Rent Expense"],
+                correct: 1,
+                explanation: "Correct! Inventory is an asset."
+              },
+              {
+                q: "What does 'liability' mean in accounting?",
+                options: ["A company's debts or obligations", "A company's income", "A company's assets", "A company's profit"],
+                correct: 0,
+                explanation: "Correct! Liability means debts or obligations."
+              },
+              {
+                q: "Which document shows a company's financial position at a specific point in time?",
+                options: ["Income Statement", "Balance Sheet", "Cash Flow Statement", "Bank Statement"],
+                correct: 1,
+                explanation: "Correct! The Balance Sheet shows financial position at a specific time."
+              },
+              {
+                q: "Which of the following is a revenue account?",
+                options: ["Sales", "Equipment", "Accounts Payable", "Inventory"],
+                correct: 0,
+                explanation: "Correct! Sales is a revenue account."
+              }
+            ],
+            economics: [
+              {
+                q: "What is 'demand'?",
+                options: ["The amount of goods sellers want to sell", "The amount of goods buyers want to buy", "The price of goods", "The cost of production"],
+                correct: 1,
+                explanation: "Correct! Demand is the amount buyers want to buy."
+              },
+              {
+                q: "What is the basic economic problem?",
+                options: ["Scarcity", "Abundance", "Inflation", "Recession"],
+                correct: 0,
+                explanation: "Correct! Scarcity is the basic economic problem."
+              },
+              {
+                q: "Which of the following is a factor of production?",
+                options: ["Land", "Money", "Advertising", "Tax"],
+                correct: 0,
+                explanation: "Correct! Land is a factor of production."
+              },
+              {
+                q: "What does GDP stand for?",
+                options: ["Gross Domestic Product", "General Demand Price", "Government Debt Payment", "Global Development Plan"],
+                correct: 0,
+                explanation: "Correct! GDP stands for Gross Domestic Product."
+              },
+              {
+                q: "What is inflation?",
+                options: ["A decrease in prices", "An increase in prices", "A type of tax", "A government policy"],
+                correct: 1,
+                explanation: "Correct! Inflation is an increase in prices."
+              }
+            ],
       english: [
         {
           q: "Which of the following is a noun?",
