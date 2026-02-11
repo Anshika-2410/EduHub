@@ -100,5 +100,13 @@
   <footer class="footer">
     <p>Created by Achal Rao | Page 5</p>
   </footer>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('backtop')) {
+        e.preventDefault();
+        document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
 </body>
 </html>

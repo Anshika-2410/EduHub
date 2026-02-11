@@ -46,7 +46,7 @@
 
         <form class="quiz" id="quiz-form" style="display:none;">
           <div id="quiz-container"></div>
-          <button class="btn" type="button" onclick="submitQuiz()">Submit Quiz</button>
+          <button class="btn" type="button" style="cursor: pointer; width: 100%; margin-top: 15px;" onclick="submitQuiz()">Submit Quiz</button>
           <div id="feedback-container" style="margin-top: 20px;"></div>
         </form>
 
@@ -301,6 +301,14 @@
       feedbackHTML += motivationMessage;
       document.getElementById('feedback-container').innerHTML = feedbackHTML;
     }
+
+    // Back to Top smooth scroll
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('backtop')) {
+        e.preventDefault();
+        document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   </script>
 </body>
 </html>

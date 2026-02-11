@@ -65,25 +65,60 @@
     </section>
 
     <section class="card">
-      <h2>Mini Slideshow (CSS Carousel)</h2>
-      <p class="muted">This is a simple CSS slideshow using three images.</p>
+      <h2>📚 Study Resources Showcase</h2>
+      <p class="muted">Explore our Year 13 study tools and learning resources for English, Mathematics, and Computer Studies.</p>
 
       <div class="carousel">
-        <div class="slides">
-          <img src="assets/slide1.jpg" alt="Students studying" />
-          <img src="assets/slide2.jpg" alt="Books and learning" />
-          <img src="assets/slide3.jpg" alt="Online learning" />
+        <div class="slides showcase-slides">
+          <div class="showcase-card">
+            <div class="showcase-icon">📅</div>
+            <div class="showcase-title">Study Planner</div>
+            <div class="showcase-caption">Year 13 Weekly Study Schedule</div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-icon">📝</div>
+            <div class="showcase-title">Worksheet Pack</div>
+            <div class="showcase-caption">Exercises for English, Math & Computer Studies</div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-icon">✅</div>
+            <div class="showcase-title">Revision Checklist</div>
+            <div class="showcase-caption">Checklist for Year 13 Revision Topics</div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-icon">📖</div>
+            <div class="showcase-title">English Studies</div>
+            <div class="showcase-caption">Year 13 English Resources</div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-icon">➗</div>
+            <div class="showcase-title">Mathematics</div>
+            <div class="showcase-caption">Year 13 Mathematics Resources</div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-icon">💻</div>
+            <div class="showcase-title">Computer Studies</div>
+            <div class="showcase-caption">Year 13 Computer Studies</div>
+          </div>
         </div>
       </div>
 
-      <p class="muted">Put 3 images in <strong>assets</strong> named slide1.jpg, slide2.jpg, slide3.jpg.</p>
     </section>
 
-    <a class="backtop" href="#top">Back to Top ↑</a>
+
+    <!-- ...existing code... -->
   </main>
 
   <footer class="footer">
     <p>Created by Achal Rao | Page 1</p>
   </footer>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('backtop')) {
+        e.preventDefault();
+        document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
 </body>
 </html>
