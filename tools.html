@@ -8,8 +8,11 @@
 </head>
 <body>
   <header class="top" id="top">
+    <div style="text-align: center; padding: 5px 0; background: #1a5490; color: white; font-size: 12px;">
+      <p style="margin: 0;">A Learning Resource Hub Inspired by Fiji Ministry of Education</p>
+    </div>
     <nav class="nav">
-      <a class="logo" href="index.html">EduHub</a>
+      <a class="logo" href="index.html">EduHub Fiji</a>
       <div class="links">
         <a href="index.html">Home</a>
         <a href="subjects.html">Subjects</a>
@@ -28,27 +31,26 @@
 
     <section class="grid">
       <div class="card">
-        <h2>Quick Quiz (Mini Form)</h2>
-        <form class="quiz">
-          <label>1) HTML stands for:</label>
-          <select>
-            <option>Choose…</option>
-            <option>HyperText Markup Language</option>
-            <option>HighText Modern Language</option>
-            <option>Home Tool Markup Language</option>
+        <h2>Quick Quiz</h2>
+        <p class="muted">Select a subject and answer 5 randomized questions. Questions change each time you refresh!</p>
+        
+        <div style="margin-bottom: 20px;">
+          <label for="subject-select"><strong>Select Subject:</strong></label>
+          <select id="subject-select">
+            <option value="">Choose a subject...</option>
+            <option value="english">English</option>
+            <option value="maths">Maths</option>
+            <option value="computer">Computer Science</option>
           </select>
+        </div>
 
-          <label>2) CSS is used for:</label>
-          <select>
-            <option>Choose…</option>
-            <option>Styling a webpage</option>
-            <option>Sending emails</option>
-            <option>Creating viruses</option>
-          </select>
-
-          <button class="btn" type="button">Submit (Teacher Demo)</button>
-          <p class="muted">Note: This is a simple interactive form (no JavaScript required).</p>
+        <form class="quiz" id="quiz-form" style="display:none;">
+          <div id="quiz-container"></div>
+          <button class="btn" type="button" onclick="submitQuiz()">Submit Quiz</button>
+          <div id="feedback-container" style="margin-top: 20px;"></div>
         </form>
+
+        <p class="muted" id="no-subject-msg">👆 Select a subject to begin!</p>
       </div>
 
       <div class="card">
@@ -65,9 +67,9 @@
       <div class="card">
         <h2>Downloads</h2>
         <ul>
-          <li><a class="link" href="assets/download/STUDY PLANNER.docx" download>Study Planner</a></li>
-          <li><a class="link" href="assets/download/REVISION CHECKLIST.docx" download>Revision Checklist</a></li>
-          <li><a class="link" href="assets/download/WORKSHEET PACK.docx" download>Worksheet Pack</a></li>
+          <li><a class="link" href="assets/download/STUDY_PLANNER.docx" download>Study Planner</a></li>
+          <li><a class="link" href="assets/download/REVISION_CHECKLIST.docx" download>Revision Checklist</a></li>
+          <li><a class="link" href="assets/download/WORKSHEET_PACK.docx" download>Worksheet Pack</a></li>
         </ul>
       </div>
 
@@ -86,7 +88,219 @@
   </main>
 
   <footer class="footer">
-    <p>Index #: ____________ | Page 3</p>
+    <p>Created by Achal Rao | Page 3</p>
   </footer>
+
+  <script>
+    // Quiz Questions Database
+    const quizData = {
+      english: [
+        {
+          q: "Which of the following is a noun?",
+          options: ["Run", "Happy", "Beautiful", "Cat"],
+          correct: 3,
+          explanation: "Correct! 'Cat' is a noun (a person, place, or thing)."
+        },
+        {
+          q: "What is the past tense of 'go'?",
+          options: ["Goes", "Went", "Going", "Gone"],
+          correct: 1,
+          explanation: "Correct! 'Went' is the past tense of 'go'."
+        },
+        {
+          q: "Which sentence is grammatically correct?",
+          options: ["She don't like pizza", "He go to school", "They are happy", "We was tired"],
+          correct: 2,
+          explanation: "Correct! 'They are happy' uses proper subject-verb agreement."
+        },
+        {
+          q: "What does 'obsolete' mean?",
+          options: ["Modern and new", "No longer in use", "Very expensive", "Easy to find"],
+          correct: 1,
+          explanation: "Correct! Obsolete means no longer in use or outdated."
+        },
+        {
+          q: "Identify the adjective in: 'The blue car is fast'",
+          options: ["Car", "Blue", "Is", "Fast"],
+          correct: 1,
+          explanation: "Correct! Both 'blue' and 'fast' are adjectives, but 'blue' comes first."
+        }
+      ],
+      maths: [
+        {
+          q: "What is 15 + 23?",
+          options: ["36", "38", "40", "35"],
+          correct: 1,
+          explanation: "Correct! 15 + 23 = 38."
+        },
+        {
+          q: "What is 8 × 7?",
+          options: ["54", "56", "58", "60"],
+          correct: 1,
+          explanation: "Correct! 8 × 7 = 56."
+        },
+        {
+          q: "What is 45 ÷ 5?",
+          options: ["8", "9", "10", "7"],
+          correct: 1,
+          explanation: "Correct! 45 ÷ 5 = 9."
+        },
+        {
+          q: "What is 12 - 7?",
+          options: ["4", "5", "6", "3"],
+          correct: 1,
+          explanation: "Correct! 12 - 7 = 5."
+        },
+        {
+          q: "What is 25% of 80?",
+          options: ["15", "20", "25", "30"],
+          correct: 1,
+          explanation: "Correct! 25% of 80 = 20."
+        }
+      ],
+      computer: [
+        {
+          q: "What does HTML stand for?",
+          options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"],
+          correct: 0,
+          explanation: "Correct! HTML stands for HyperText Markup Language."
+        },
+        {
+          q: "Which of the following is a programming language?",
+          options: ["HTML", "CSS", "Python", "XML"],
+          correct: 2,
+          explanation: "Correct! Python is a programming language. HTML and CSS are markup/styling languages."
+        },
+        {
+          q: "What is CSS used for?",
+          options: ["Creating databases", "Styling web pages", "Writing server logic", "Compiling code"],
+          correct: 1,
+          explanation: "Correct! CSS (Cascading Style Sheets) is used for styling web pages."
+        },
+        {
+          q: "What does RAM stand for?",
+          options: ["Random Access Memory", "Read And Modify", "Rapid Application Manager", "Recovery And Monitoring"],
+          correct: 0,
+          explanation: "Correct! RAM stands for Random Access Memory."
+        },
+        {
+          q: "Which is NOT a programming language?",
+          options: ["JavaScript", "Java", "HTTP", "Python"],
+          correct: 2,
+          explanation: "Correct! HTTP is a protocol, not a programming language."
+        }
+      ]
+    };
+
+    // Shuffle array function
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // Load quiz when subject is selected
+    document.getElementById('subject-select').addEventListener('change', function() {
+      const subject = this.value;
+      if (!subject) {
+        document.getElementById('quiz-form').style.display = 'none';
+        document.getElementById('no-subject-msg').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('no-subject-msg').style.display = 'none';
+      document.getElementById('quiz-form').style.display = 'block';
+      document.getElementById('feedback-container').innerHTML = '';
+
+      // Get randomized questions
+      const questions = shuffle(quizData[subject]);
+
+      // Generate quiz HTML
+      let quizHTML = '';
+      questions.forEach((q, index) => {
+        quizHTML += `
+          <div style="margin-bottom: 20px; padding: 15px; background: #334155; border-left: 4px solid #3b82f6; border-radius: 5px;">
+            <label style="display: block; margin-bottom: 10px; color: #f1f5f9; font-weight: bold; font-size: 15px;"><strong>${index + 1}) ${q.q}</strong></label>
+            <select id="answer-${index}" style="margin-top: 8px; background: #1e293b; color: #f1f5f9; border: 1px solid #475569;">
+              <option value="" style="color: #f1f5f9;">Choose an answer...</option>
+              ${q.options.map((opt, i) => `<option value="${i}" style="color: #f1f5f9;">${opt}</option>`).join('')}
+            </select>
+          </div>
+        `;
+      });
+
+      document.getElementById('quiz-container').innerHTML = quizHTML;
+      window.currentQuestions = questions;
+    });
+
+    // Submit quiz and show feedback
+    function submitQuiz() {
+      const questions = window.currentQuestions;
+      let correct = 0;
+      let feedbackHTML = '<h3 style="color: #f1f5f9; margin-top: 20px; margin-bottom: 15px;">📋 Your Results:</h3>';
+
+      questions.forEach((q, index) => {
+        const selected = document.getElementById(`answer-${index}`).value;
+        const isCorrect = parseInt(selected) === q.correct;
+        
+        if (isCorrect) {
+          correct++;
+          feedbackHTML += `
+            <div style="margin: 12px 0; padding: 12px 14px; background: rgba(16, 185, 129, 0.15); border-left: 4px solid #10b981; border-radius: 6px; color: #86efac;">
+              <strong style="color: #d1fae5;">Q${index + 1}:</strong> ✅ ${q.explanation}
+            </div>
+          `;
+        } else {
+          feedbackHTML += `
+            <div style="margin: 12px 0; padding: 12px 14px; background: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; border-radius: 6px; color: #fca5a5;">
+              <strong style="color: #fee2e2;">Q${index + 1}:</strong> ❌ The correct answer is: <strong style="color: #fecaca;">${q.options[q.correct]}</strong>
+            </div>
+          `;
+        }
+      });
+
+      const scorePercent = Math.round(correct/5*100);
+      const scoreColor = scorePercent >= 80 ? '#10b981' : scorePercent >= 60 ? '#f59e0b' : '#ef4444';
+      feedbackHTML += `<h4 style="margin-top: 20px; color: ${scoreColor}; font-size: 18px;">Your Score: ${correct}/5 (${scorePercent}%)</h4>`;
+      
+      // Add motivational message based on score
+      let motivationMessage = '';
+      if (scorePercent === 100) {
+        motivationMessage = `
+          <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(34, 197, 94, 0.2)); border-left: 4px solid #10b981; border-radius: 6px;">
+            <p style="color: #86efac; font-size: 16px; font-weight: bold; margin: 0;">🏆 PERFECT SCORE! You're a superstar!</p>
+            <p style="color: #d1fae5; margin: 8px 0 0 0;">You've mastered this topic! Keep pushing and help your classmates learn too. You're on your way to excellence!</p>
+          </div>
+        `;
+      } else if (scorePercent >= 80) {
+        motivationMessage = `
+          <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(34, 197, 94, 0.2)); border-left: 4px solid #10b981; border-radius: 6px;">
+            <p style="color: #86efac; font-size: 16px; font-weight: bold; margin: 0;">⭐ Excellent work! You've got this!</p>
+            <p style="color: #d1fae5; margin: 8px 0 0 0;">You're doing amazing! Review the questions you missed and you'll be unstoppable. Keep up the hard work!</p>
+          </div>
+        `;
+      } else if (scorePercent >= 60) {
+        motivationMessage = `
+          <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2)); border-left: 4px solid #f59e0b; border-radius: 6px;">
+            <p style="color: #fcd34d; font-size: 16px; font-weight: bold; margin: 0;">💪 Good effort! You're on the right track!</p>
+            <p style="color: #fde68a; margin: 8px 0 0 0;">Review the concepts you struggled with and try again. Every attempt makes you stronger! Practice makes perfect!</p>
+          </div>
+        `;
+      } else {
+        motivationMessage = `
+          <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(248, 113, 113, 0.2)); border-left: 4px solid #ef4444; border-radius: 6px;">
+            <p style="color: #fca5a5; font-size: 16px; font-weight: bold; margin: 0;">🚀 Keep pushing! You can do better!</p>
+            <p style="color: #fee2e2; margin: 8px 0 0 0;">Don't give up! Review the study materials and take the quiz again. Each attempt teaches you something new. You've got the potential!</p>
+          </div>
+        `;
+      }
+      
+      feedbackHTML += motivationMessage;
+      document.getElementById('feedback-container').innerHTML = feedbackHTML;
+    }
+  </script>
 </body>
 </html>
