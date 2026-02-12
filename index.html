@@ -41,6 +41,260 @@
         <h3 style="color: #fff; font-size: 22px; margin-bottom: 12px;">📚 Study Tip</h3>
         <p style="color: #f0f0f0; font-size: 15px; font-weight: 500; line-height: 1.6;"><strong style="color: #fff;">Success Strategy:</strong> Use the Pomodoro method—25 minutes focused study, 5 minute break. Repeat!</p>
         <p style="font-size: 13px; color: #e8e8e8; margin-top: 12px; font-style: italic;">✓ Aligned with Fiji Ministry of Education best practices for student success.</p>
+  <script>
+  // Modern AI Chatbot Widget
+  const faqAnswers = {
+    "How do I access study materials?": "Go to the 'Subjects' page and select your subject to access study materials.",
+    "How can I join the community?": "Visit the 'Community' page to connect with other students and educators.",
+    "Where can I find revision resources?": "Revision resources are available under each subject and in the 'Study Tools' section.",
+    "How do I contact support?": "Use the 'About Us' page to find contact information for support.",
+    "What is EduHub?": "EduHub is a platform inspired by Fiji Ministry of Education to provide quality learning resources for students."
+  };
+
+  function getBotResponse(input) {
+    input = input.trim();
+    if (faqAnswers[input]) {
+      return faqAnswers[input];
+    }
+    if (/^(hi|hello|hey|greetings)$/i.test(input)) {
+      return "Hello! How can I help you today?";
+    }
+    if (/study|learn|start/i.test(input)) {
+      return "To start studying, explore the 'Subjects' or 'Study Tools' pages.";
+    }
+    if (/community|connect/i.test(input)) {
+      return "Join the community page to connect with peers and educators.";
+    }
+    if (/help|support/i.test(input)) {
+      return "For help, visit the 'About Us' page or ask your question here.";
+    }
+    return "Sorry, I don't have an answer for that. Please ask another question or check the FAQ.";
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const chatbot = document.createElement('div');
+    chatbot.id = 'eduhub-chatbot';
+    chatbot.innerHTML = `
+      <div class="chatbot-header">
+        EduHub AI Chatbot
+        <button class="chatbot-close" title="Close Chatbot">×</button>
+      </div>
+      <div class="chatbot-body" id="chatbot-body">
+        <div class="chatbot-msg bot">Hi! Ask me anything or select a FAQ below.</div>
+        <div class="chatbot-faq">
+          <button>How do I access study materials?</button>
+          <button>How can I join the community?</button>
+          <button>Where can I find revision resources?</button>
+          <button>How do I contact support?</button>
+          <button>What is EduHub?</button>
+        </div>
+      </div>
+      <form class="chatbot-form">
+        <input type="text" placeholder="Type your question..." autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+    `;
+    document.body.appendChild(chatbot);
+
+    // Styles
+    const style = document.createElement('style');
+    style.textContent = `
+      #eduhub-chatbot {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        width: 340px;
+        max-width: 95vw;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(26,85,144,0.18);
+        font-family: Arial, sans-serif;
+        z-index: 9999;
+        overflow: hidden;
+        transition: right 0.2s, bottom 0.2s;
+      }
+      @media (max-width: 600px) {
+        #eduhub-chatbot {
+          right: 8px;
+          bottom: 8px;
+          width: 98vw;
+          border-radius: 8px;
+        }
+      }
+      .chatbot-header {
+        background: #1a5490;
+        color: #fff;
+        padding: 12px;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+      }
+      .chatbot-close {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        font-weight: bold;
+        z-index: 10001;
+      }
+      .chatbot-body {
+        padding: 12px;
+        max-height: 220px;
+        overflow-y: auto;
+      }
+      .chatbot-msg {
+        margin-bottom: 8px;
+        padding: 8px 12px;
+        border-radius: 8px;
+      }
+      .chatbot-msg.bot {
+        background: #e6f0fa;
+        color: #1a5490;
+      }
+      .chatbot-msg.user {
+        background: #f5f5f5;
+        color: #333;
+        text-align: right;
+      }
+      .chatbot-faq {
+        margin-bottom: 8px;
+      }
+      .chatbot-faq button {
+        display: block;
+        width: 100%;
+        margin-bottom: 4px;
+        background: #f0f8ff;
+        border: none;
+        padding: 6px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #1a5490;
+        font-size: 14px;
+      }
+      .chatbot-form {
+        display: flex;
+        border-top: 1px solid #eee;
+        padding: 8px;
+        background: #fafbfc;
+      }
+      .chatbot-form input {
+        flex: 1;
+        border: 2px solid #1a5490;
+        padding: 10px;
+        border-radius: 8px;
+        margin-right: 10px;
+        font-size: 16px;
+        background: #fff;
+        outline: none;
+        box-sizing: border-box;
+        z-index: 10000;
+        position: relative;
+        color: #1a5490;
+        font-weight: 600;
+        min-width: 0;
+      }
+      .chatbot-form button {
+        background: #1a5490;
+        color: #fff;
+        border: 2px solid #2563eb;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        z-index: 10001;
+        transition: background 0.2s, color 0.2s;
+      }
+      .chatbot-form button:hover {
+        background: #2563eb;
+        color: #fff;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Chatbot logic
+    const form = chatbot.querySelector('.chatbot-form');
+    const input = form.querySelector('input');
+    const body = chatbot.querySelector('#chatbot-body');
+    const faqBtns = chatbot.querySelectorAll('.chatbot-faq button');
+    const closeBtn = chatbot.querySelector('.chatbot-close');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const userMsg = input.value.trim();
+      if (!userMsg) return;
+      addMsg('user', userMsg);
+      addMsg('bot', getBotResponse(userMsg));
+      input.value = '';
+    });
+
+    faqBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const question = btn.textContent;
+        addMsg('user', question);
+        addMsg('bot', getBotResponse(question));
+      });
+    });
+
+    // Floating reopen button
+    const reopenBtn = document.createElement('button');
+    reopenBtn.id = 'chatbot-reopen';
+    reopenBtn.title = 'Open Chatbot';
+    reopenBtn.innerHTML = '💬';
+    document.body.appendChild(reopenBtn);
+    reopenBtn.style.display = 'none';
+
+    closeBtn.addEventListener('click', function() {
+      chatbot.style.display = 'none';
+      reopenBtn.style.display = 'block';
+    });
+
+    reopenBtn.addEventListener('click', function() {
+      chatbot.style.display = 'block';
+      reopenBtn.style.display = 'none';
+    });
+
+    // Style for reopen button
+    const reopenStyle = document.createElement('style');
+    reopenStyle.textContent = `
+      #chatbot-reopen {
+        position: fixed;
+        bottom: 36px;
+        right: 36px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #1a5490;
+        color: #fff;
+        border: none;
+        font-size: 2rem;
+        box-shadow: 0 2px 12px rgba(26,85,144,0.18);
+        cursor: pointer;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+      #chatbot-reopen:hover {
+        background: #2563eb;
+      }
+    `;
+    document.head.appendChild(reopenStyle);
+
+    function addMsg(sender, text) {
+      const msg = document.createElement('div');
+      msg.className = 'chatbot-msg ' + sender;
+      msg.textContent = text;
+      body.appendChild(msg);
+      body.scrollTop = body.scrollHeight;
+    }
+  });
+  </script>
       </div>
     </section>
 
